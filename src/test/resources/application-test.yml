@@ -1,0 +1,17 @@
+weather:
+  api:
+    base-url: http://localhost:${mockwebserver.port:8181}
+    connect-timeout-ms: 2000
+    read-timeout-ms: 2000
+    cache-ttl-seconds: 2
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      openMeteo:
+        sliding-window-size: 4
+        minimum-number-of-calls: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state:
+          seconds: 5
+        permitted-number-of-calls-in-half-open-state: 1

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: temperature-proxy-api
+  namespace: weather
+  labels:
+    app.kubernetes.io/name: temperature-proxy-api
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: temperature-proxy-api
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
