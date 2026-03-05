@@ -48,14 +48,6 @@ GET /api/v1/weather/current?lat={lat}&lon={lon}
 
 Swagger UI available at [/swagger-ui.html](http://localhost:8080/swagger-ui.html) when running.
 
-## Stability
-
-- **Cache** — Caffeine in-process cache keyed by `(lat, lon)` rounded to 2 decimals (~1 km), 60s TTL
-- **Circuit breaker** — Resilience4j, count-based (10-call window, 50% failure threshold, 30s open)
-- **Timeouts** — 1s connect + 1s read on the upstream HTTP client
-
-No retries by design — the circuit breaker and cache provide resilience without compounding latency.
-
 ## Observability
 
 | Endpoint                      | Description                            |
